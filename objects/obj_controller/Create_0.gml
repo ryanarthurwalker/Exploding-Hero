@@ -1,3 +1,9 @@
-global.score = 0; // Keeps track of the player's score
-global.level = 1; // Example: Track the game level (optional)
-global.timer = 1200; // Starting explosion timer in frames (optional)
+// Game-wide variables
+global.score = 0;
+global.timer = 60 * room_speed; // Optional: game-wide timer (if needed)
+game_active = true; // Tracks if the game is paused
+level = 1; // Level tracking
+
+// Explosion timer
+explosion_timer = 30 * room_speed; // 30 seconds countdown
+explosion_triggered = false;       // Explosion not triggered yet

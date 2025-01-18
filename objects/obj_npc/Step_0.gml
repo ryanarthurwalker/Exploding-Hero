@@ -17,9 +17,9 @@ if (instance_exists(obj_player)) {
     if (dist < 100) {
         // Flee from the player
         var npc_angle = point_direction(x, y, obj_player.x, obj_player.y);
-		var npc_speed = 1; // Adjust fleeing speed
+        var npc_speed = 1; // Adjust fleeing speed
         x -= lengthdir_x(npc_speed, npc_angle);
-		y -= lengthdir_y(npc_speed, npc_angle);
+        y -= lengthdir_y(npc_speed, npc_angle);
     } else {
         // Wander randomly
         x += irandom_range(-1, 1); // Small random movement

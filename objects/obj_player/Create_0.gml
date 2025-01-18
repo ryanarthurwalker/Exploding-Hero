@@ -1,1 +1,1 @@
-explosion_timer = 30 * room_speed; 
+player_speed = 4;  // Movement speed
