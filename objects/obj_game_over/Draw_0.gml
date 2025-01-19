@@ -1,0 +1,1 @@
+draw_text(room_width / 2 - 150, room_height / 3, game_over_message);

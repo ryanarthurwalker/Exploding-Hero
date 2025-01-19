@@ -1,0 +1,1 @@
+game_over_message = "Game Over! Press R to Restart or Q to Quit";
