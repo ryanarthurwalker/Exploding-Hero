@@ -1,17 +1,37 @@
-if (keyboard_check(vk_left)) x -= player_speed;
-if (keyboard_check(vk_right)) x += player_speed;
-if (keyboard_check(vk_up)) y -= player_speed;
-if (keyboard_check(vk_down)) y += player_speed;
+// Normal movement controls (arrow keys)
+var move_speed = 4; // Default move speed
 
-if (keyboard_check(vk_left)) image_angle = 180;
-if (keyboard_check(vk_right)) image_angle = 0;
-if (keyboard_check(vk_up)) image_angle = 270;
-if (keyboard_check(vk_down)) image_angle = 90;
+// Speed boost effect
+if (global.speed_boost_active) {
+    move_speed = 6; // Increase movement speed when speed boost is active
+}
 
-// Adjust this value for weaker or stronger pull
-var pull_strength = 2; // Basic pull strength
+// Moving the player with arrow keys
+if (keyboard_check(vk_left)) {
+    x -= move_speed;
+    image_angle = 180; // Face left
+}
 
+if (keyboard_check(vk_right)) {
+    x += move_speed;
+    image_angle = 0; // Face right
+}
+
+if (keyboard_check(vk_up)) {
+    y -= move_speed;
+    image_angle = 270; // Face up
+}
+
+if (keyboard_check(vk_down)) {
+    y += move_speed;
+    image_angle = 90; // Face down
+}
+
+// Magnet logic (pull NPCs towards player)
 if (global.magnet_active) {
+    // Adjust this value for weaker or stronger pull
+    var pull_strength = 2; // Basic pull strength
+
     // Pull NPCs towards the player
     with (obj_npc) {
         // Calculate the direction from the NPC to the player
@@ -37,5 +57,16 @@ if (global.magnet_active) {
     // Deactivate the magnet effect after its duration ends
     if (global.magnet_duration <= 0) {
         global.magnet_active = false;
+    }
+}
+
+// Speed boost effect logic
+if (global.speed_boost_active) {
+    // Decrease the speed boost duration
+    global.speed_boost_duration -= 1;
+
+    // Deactivate the speed boost after its duration ends
+    if (global.speed_boost_duration <= 0) {
+        global.speed_boost_active = false; // Deactivate the effect
     }
 }

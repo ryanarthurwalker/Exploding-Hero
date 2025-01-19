@@ -7,6 +7,8 @@ global.game_paused = false;
 global.freeze_bomb_count = 0; // Start with 0 freeze bombs
 global.magnet_active = false; // Magnet effect is not active initially
 global.magnet_duration = 0;   // Duration of the magnet effect (in frames)
+global.speed_boost_active = false; // Speed boost effect is initially inactive
+global.speed_boost_duration = 0;   // Duration of the speed boost effect (in frames)
 
 
 // Explosion timer
