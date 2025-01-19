@@ -1,3 +1,8 @@
+if (global.game_paused) {
+    exit; // Skip NPC movement while paused
+}
+
+
 if (escape_mode) {
     // Move toward the escape target
     var angle_to_target = point_direction(x, y, escape_target_x, escape_target_y);
