@@ -35,7 +35,7 @@
   "name":"Exploding Hero",
   "resources":[
     {"id":{"name":"obj_controller","path":"objects/obj_controller/obj_controller.yy",},},
-    {"id":{"name":"obj_explosion","path":"objects/obj_explosion/obj_explosion.yy",},},
+    {"id":{"name":"obj_explosion_effect","path":"objects/obj_explosion_effect/obj_explosion_effect.yy",},},
     {"id":{"name":"obj_freeze_bomb","path":"objects/obj_freeze_bomb/obj_freeze_bomb.yy",},},
     {"id":{"name":"obj_npc","path":"objects/obj_npc/obj_npc.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},

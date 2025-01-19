@@ -5,7 +5,7 @@ draw_set_valign(fa_top);
 
 // Timer
 if (explosion_timer > 0) {
-    var time_left = ceil(explosion_timer / room_speed);
+    var time_left = ceil(explosion_timer / game_get_speed(gamespeed_fps));
     draw_text(10, 10, "Time Left: " + string(time_left) + "s");
 } else {
     draw_text(10, 10, "Explosion triggered!");
