@@ -34,3 +34,9 @@ if (instance_number(obj_npc) == 0) { // All NPCs destroyed
     level += 1;
     show_debug_message("Level Up! Now on Level: " + string(level));
 }
+
+if (random(1000) < 10) { 
+    var bomb_x = irandom_range(50, room_width - 50);
+    var bomb_y = irandom_range(50, room_height - 50);
+    instance_create_layer(bomb_x, bomb_y, "Instances", obj_freeze_bomb);
+}

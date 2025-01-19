@@ -2,8 +2,21 @@ if (global.game_paused) {
     exit; // Skip NPC movement while paused
 }
 
+// Handle freeze state
+if (frozen) {
+    speed = 0; // Stop movement
+    freeze_timer -= 1; // Countdown the freeze timer
 
-if (escape_mode) {
+    // Unfreeze when the timer reaches 0
+    if (freeze_timer <= 0) {
+        frozen = false; // Exit freeze state
+        speed = original_speed; // Restore speed
+    }
+}
+
+// Normal NPC movement logic if not frozen
+if (!frozen) {
+    if (escape_mode) {
     // Move toward the escape target
     var angle_to_target = point_direction(x, y, escape_target_x, escape_target_y);
     x += lengthdir_x(escape_speed, angle_to_target);
@@ -35,3 +48,13 @@ if (instance_exists(obj_player)) {
     x += irandom_range(-1, 1);
     y += irandom_range(-1, 1);
 }
+}
+
+if (frozen) {
+    image_blend = c_blue; // Change color to blue
+} else {
+    image_blend = c_white; // Reset color
+}
+
+
+
