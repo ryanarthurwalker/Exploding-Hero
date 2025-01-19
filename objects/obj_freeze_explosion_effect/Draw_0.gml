@@ -1,5 +1,7 @@
-// Use explosion_radius to control the scale, but with a fixed base size to prevent excessive scaling
-var scale_factor = explosion_radius / 100; // Adjust 100 for desired scaling factor
+// Draw Event for obj_freeze_explosion_effect
+
+// Apply scaling to the sprite based on explosion radius
+var scale_factor = explosion_radius / 100;  // Adjust the scale factor to fit your needs
 
 // Apply scaling to the sprite
 image_xscale = scale_factor;

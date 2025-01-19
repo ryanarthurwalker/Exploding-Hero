@@ -1,1 +1,0 @@
-speed = 2; // Reset NPC speed

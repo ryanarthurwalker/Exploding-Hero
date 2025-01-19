@@ -1,7 +1,9 @@
-escape_mode = false; // Whether the NPC is escaping from a wall
-escape_target_x = 0; // Target x-coordinate to move away from the wall
-escape_target_y = 0; // Target y-coordinate to move away from the wall
-escape_speed = 1;    // Speed at which the NPC escapes
-frozen = false; // NPC starts unfrozen
-freeze_timer = 0; // Countdown timer for freeze state
-original_speed = speed; // Store the original speed for restoring
+original_speed = 0;  // Default movement speed
+speed = original_speed;  // Current speed
+freeze_timer = 0;  // Freeze timer (e.g., 5 seconds)
+freeze_timer_initialized = false; 
+frozen = false;  // Is the NPC frozen?
+escape_mode = false;  // Is the NPC escaping?
+escape_target_x = 0;  // Target X position for escaping
+escape_target_y = 0;  // Target Y position for escaping
+escape_speed = 2;  // Speed of the NPC when escaping

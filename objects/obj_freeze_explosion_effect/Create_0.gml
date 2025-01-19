@@ -1,4 +1,9 @@
-explosion_radius = 10; // Start with a smaller radius
-max_radius = 50; // Adjust the maximum radius to a more reasonable value
-growth_rate = 2; // Control how fast the explosion grows (lower values = slower growth)
-lifetime = room_speed * 0.5; // Duration of the explosion effect (adjust if needed)
+// Initialize the explosion's properties
+explosion_radius = 1;  // Start with a radius of 0
+growth_rate = 1.0;     // How fast the explosion grows
+max_radius = 50;      // Max size of the explosion
+
+
+
+// Set lifetime (5 seconds converted to frames)
+lifetime = 5 * game_get_speed(gamespeed_fps);  // Lifetime in frames based on FPS

@@ -1,60 +1,70 @@
+// Skip NPC movement if the game is paused
 if (global.game_paused) {
-    exit; // Skip NPC movement while paused
+    exit; // Skip everything if the game is paused
 }
 
-// Handle freeze state
+// Handle freeze state (already set in collision event)
 if (frozen) {
-    speed = 0; // Stop movement
-    freeze_timer -= 1; // Countdown the freeze timer
+    // Countdown the freeze timer
+    freeze_timer -= 1 * game_get_speed(gamespeed_fps); // Decrease freeze timer frame-by-frame
 
-    // Unfreeze when the timer reaches 0
+    // If the freeze timer runs out, unfreeze the NPC
     if (freeze_timer <= 0) {
-        frozen = false; // Exit freeze state
-        speed = original_speed; // Restore speed
+        frozen = false;  // NPC is unfrozen
+        speed = original_speed;  // Restore original speed
+        image_blend = c_white;  // Reset color to normal
+        escape_mode = false; // Stop escape mode when unfrozen
     }
-}
 
-// Normal NPC movement logic if not frozen
-if (!frozen) {
-    if (escape_mode) {
-    // Move toward the escape target
-    var angle_to_target = point_direction(x, y, escape_target_x, escape_target_y);
-    x += lengthdir_x(escape_speed, angle_to_target);
-    y += lengthdir_y(escape_speed, angle_to_target);
+    // Stop NPC movement while frozen
+    speed = 0;  // Prevent movement
+    escape_mode = false; // Prevent escape mode when frozen
 
-    // Check if the NPC has reached the escape target
-    if (point_distance(x, y, escape_target_x, escape_target_y) < 2) {
-        escape_mode = false; // Stop escaping
-    }
-    return; // Skip other behaviors while escaping
-}
+    // Visual feedback: Change color to blue to indicate freezing
+    image_blend = c_blue;
 
-if (instance_exists(obj_player)) {
-    var dist = point_distance(x, y, obj_player.x, obj_player.y);
+} else { // If not frozen, proceed with normal movement logic
+    // NPC behavior when player exists
+    if (instance_exists(obj_player)) {
+        var dist = point_distance(x, y, obj_player.x, obj_player.y);
 
-    if (dist < 100) {
-        // Flee from the player
-        var npc_angle = point_direction(x, y, obj_player.x, obj_player.y);
-        var npc_speed = 1; // Adjust fleeing speed
-        x -= lengthdir_x(npc_speed, npc_angle);
-        y -= lengthdir_y(npc_speed, npc_angle);
+        if (dist < 100) {
+            // Flee from the player
+            var npc_angle = point_direction(x, y, obj_player.x, obj_player.y);
+            var npc_speed = 2 + (100 - dist) / 10;  // Speed increases as NPC gets closer
+            x -= lengthdir_x(npc_speed, npc_angle);  // Move away from the player
+            y -= lengthdir_y(npc_speed, npc_angle);  // Move away from the player
+        } else {
+            // Wander randomly when the player is not close
+            var random_direction = irandom_range(0, 3);
+            if (random_direction == 0) {
+                x += 1;  // Move right
+            } else if (random_direction == 1) {
+                x -= 1;  // Move left
+            } else if (random_direction == 2) {
+                y += 1;  // Move down
+            } else {
+                y -= 1;  // Move up
+            }
+        }
     } else {
-        // Wander randomly
-        x += irandom_range(-1, 1); // Small random movement
-        y += irandom_range(-1, 1);
+        // Wander randomly when no player exists
+        var random_direction = irandom_range(0, 3);
+        if (random_direction == 0) {
+            x += 1;  // Move right
+        } else if (random_direction == 1) {
+            x -= 1;  // Move left
+        } else if (random_direction == 2) {
+            y += 1;  // Move down
+        } else {
+            y -= 1;  // Move up
+        }
     }
-} else {
-    // Wander randomly when no player exists
-    x += irandom_range(-1, 1);
-    y += irandom_range(-1, 1);
-}
 }
 
+// Freezing visual effect (if frozen, NPC should appear blue)
 if (frozen) {
-    image_blend = c_blue; // Change color to blue
+    image_blend = c_blue; // Change color to blue to indicate frozen state
 } else {
-    image_blend = c_white; // Reset color
+    image_blend = c_white; // Reset color when unfrozen
 }
-
-
-
