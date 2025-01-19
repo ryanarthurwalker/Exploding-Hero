@@ -22,6 +22,7 @@
     {"name":"obj_freeze_bomb","order":3,"path":"objects/obj_freeze_bomb/obj_freeze_bomb.yy",},
     {"name":"obj_npc","order":1,"path":"objects/obj_npc/obj_npc.yy",},
     {"name":"obj_wall","order":5,"path":"objects/obj_wall/obj_wall.yy",},
+    {"name":"Room2","order":1,"path":"rooms/Room2/Room2.yy",},
     {"name":"spr_explosion","order":3,"path":"sprites/spr_explosion/spr_explosion.yy",},
     {"name":"spr_freeze_bomb","order":2,"path":"sprites/spr_freeze_bomb/spr_freeze_bomb.yy",},
     {"name":"spr_npc","order":1,"path":"sprites/spr_npc/spr_npc.yy",},

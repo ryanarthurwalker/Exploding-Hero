@@ -3,6 +3,8 @@ global.score = 0;
 global.timer = 10 * game_get_speed(gamespeed_fps); // Optional: game-wide timer (if needed)
 game_active = true; // Tracks if the game is paused
 level = 1; // Level tracking
+global.game_paused = false;
+
 
 // Explosion timer
 explosion_triggered = false;       // Explosion not triggered yet

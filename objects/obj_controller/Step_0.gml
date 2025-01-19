@@ -1,9 +1,6 @@
-// Pause/Resume game
-if (keyboard_check_pressed(vk_space)) {
-    game_active = !game_active; // Toggle pause
-}
-if (!game_active) {
-    exit; // Pause game logic
+// Skip game logic if paused
+if (global.game_paused) {
+    exit; // Exit the Step Event early
 }
 
 // Explosion Timer Logic
@@ -31,10 +28,6 @@ if (!instance_exists(obj_player)) {
     show_debug_message("Game Over!");
 }
 
-// Restart Game
-if (keyboard_check_pressed(vk_delete)) {
-    game_restart(); // Restart the game
-}
 
 // Level Progression
 if (instance_number(obj_npc) == 0) { // All NPCs destroyed

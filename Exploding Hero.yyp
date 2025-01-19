@@ -41,6 +41,7 @@
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"obj_wall","path":"objects/obj_wall/obj_wall.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"id":{"name":"Room2","path":"rooms/Room2/Room2.yy",},},
     {"id":{"name":"spr_explosion","path":"sprites/spr_explosion/spr_explosion.yy",},},
     {"id":{"name":"spr_freeze_bomb","path":"sprites/spr_freeze_bomb/spr_freeze_bomb.yy",},},
     {"id":{"name":"spr_npc","path":"sprites/spr_npc/spr_npc.yy",},},
@@ -52,6 +53,7 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"roomId":{"name":"Room2","path":"rooms/Room2/Room2.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[
