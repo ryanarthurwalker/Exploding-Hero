@@ -1,40 +1,41 @@
-// Step 1: Centering the menu on the room center
 
-// Calculate the center of the room
+
+// Draw the menu text
 var center_x = room_width / 2;
 var center_y = room_height / 2;
+var y_offset = -50;
 
-// Set the y-offset to create space for the title
-var y_offset = -50; // Adjust this value to change the vertical position of the menu
-
-// Set the default font for the title
+// Main Menu Title
 draw_set_font(fnt_default);
-
-// Draw the main menu title at the center (horizontal) and at a vertical offset
 draw_text(center_x - string_width("Main Menu") / 2, center_y + y_offset, "Main Menu");
 
-// Draw the options
+// Start Game Option
 if (menu_option == 0) {
-    // Highlight "Start Game" with bold and larger font
     draw_set_font(fnt_bold);
-    draw_text(center_x - string_width("Start Game (Selected)") / 2, center_y + 50, "Start Game (Selected)");
-    draw_set_font(fnt_default); // Reset to default font
+    draw_text(center_x - string_width("Start Game") / 2, center_y + 100, "Start Game");
+    draw_set_font(fnt_default);
 } else {
-    draw_text(center_x - string_width("Start Game") / 2, center_y + 50, "Start Game");
+    draw_text(center_x - string_width("Start Game") / 2, center_y + 100, "Start Game");
 }
 
+// Quit Option
 if (menu_option == 1) {
-    // Highlight "Quit" with bold and larger font
     draw_set_font(fnt_bold);
-    draw_text(center_x - string_width("Quit (Selected)") / 2, center_y + 80, "Quit (Selected)");
-    draw_set_font(fnt_default); // Reset to default font
+    draw_text(center_x - string_width("Quit") / 2, center_y + 130, "Quit ");
+    draw_set_font(fnt_default);
 } else {
-    draw_text(center_x - string_width("Quit") / 2, center_y + 80, "Quit");
+    draw_text(center_x - string_width("Quit") / 2, center_y + 130, "Quit");
 }
 
-// Add the "How to Play" section below the menu options
-draw_set_font(fnt_default); // Use default font for this section
-draw_text(center_x - string_width("How to Play") / 2, center_y + 150, "How to Play:");
-draw_text(center_x - string_width("Use arrow keys to move") / 2, center_y + 180, "Use arrow keys to move");
-draw_text(center_x - string_width("Press space to interact") / 2, center_y + 210, "Press space to interact");
-draw_text(center_x - string_width("Avoid enemies and obstacles") / 2, center_y + 240, "Avoid enemies and obstacles");
+// How to Play Section
+draw_text(center_x - string_width("How to Play") / 2, center_y + 180, "How to Play:");
+draw_text(center_x - string_width("Use arrow keys to move") / 2, center_y + 210, "Use arrow keys to move");
+draw_text(center_x - string_width("Press space to interact") / 2, center_y + 240, "Press space to interact");
+draw_text(center_x - string_width("Avoid enemies and obstacles") / 2, center_y + 270, "Avoid enemies and obstacles");
+
+// Fade overlay
+if (fading_out) {
+    draw_set_alpha(fade_opacity);  // Apply fade opacity
+    draw_rectangle_color(0, 0, room_width, room_height, c_black, c_black, c_black, c_black, false);  // Black fade overlay
+    draw_set_alpha(1);  // Reset alpha to normal
+}
