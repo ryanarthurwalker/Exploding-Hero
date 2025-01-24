@@ -106,3 +106,9 @@ if (global.speed_boost_active) {
         global.speed_boost_active = false; // Deactivate the effect
     }
 }
+
+// Check if the player's health drops to 0 or below
+if (global.health <= 0) {
+    show_debug_message("Player has died!");
+    instance_destroy(); // Destroy the player object (or trigger a game over screen)
+}

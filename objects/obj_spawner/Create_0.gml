@@ -1,4 +1,4 @@
-max_npcs = 100; // Total number of NPCs to spawn
+max_npcs = 10; // Total number of NPCs to spawn
 spawn_timer = 0;
 spawn_interval = 1000;
 
