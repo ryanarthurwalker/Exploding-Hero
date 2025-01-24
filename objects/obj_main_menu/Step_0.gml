@@ -30,6 +30,6 @@ if (fading_out) {
     fade_opacity += fade_speed;  // Increase the fade opacity
     if (fade_opacity >= 1) {
         // Fully faded out, transition to the next room
-        room_goto(Room1);  // Replace 'Room1' with the correct name of your game room
+        room_goto_next();  // Replace 'Room1' with the correct name of your game room
     }
 }

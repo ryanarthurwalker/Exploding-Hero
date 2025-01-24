@@ -7,3 +7,5 @@ escape_mode = false;  // Is the NPC escaping?
 escape_target_x = 0;  // Target X position for escaping
 escape_target_y = 0;  // Target Y position for escaping
 escape_speed = 2;  // Speed of the NPC when escaping
+image_xscale = 0.2;
+image_yscale = 0.2; 

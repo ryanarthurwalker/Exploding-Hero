@@ -1,31 +1,44 @@
-// Normal movement controls (arrow keys)
-var move_speed = 4; // Default move speed
+// Horizontal movement
+if (keyboard_check(vk_right)) {
+    hspeed += acceleration; // Accelerate to the right
+} else if (keyboard_check(vk_left)) {
+    hspeed -= acceleration; // Accelerate to the left
+} else {
+    // Decelerate horizontally if no keys are pressed
+    if (abs(hspeed) > deceleration) {
+        hspeed -= sign(hspeed) * deceleration;
+    } else {
+        hspeed = 0; // Stop completely when very slow
+    }
+}
+
+// Vertical movement
+if (keyboard_check(vk_up)) {
+    vspeed -= acceleration; // Accelerate upward
+} else if (keyboard_check(vk_down)) {
+    vspeed += acceleration; // Accelerate downward
+} else {
+    // Decelerate vertically if no keys are pressed
+    if (abs(vspeed) > deceleration) {
+        vspeed -= sign(vspeed) * deceleration;
+    } else {
+        vspeed = 0; // Stop completely when very slow
+    }
+}
+
+// Clamp the speed to the maximum
+hspeed = clamp(hspeed, -max_speed, max_speed);
+vspeed = clamp(vspeed, -max_speed, max_speed);
+
+// Apply movement
+x += hspeed;
+y += vspeed;
 
 // Speed boost effect
 if (global.speed_boost_active) {
     move_speed = 6; // Increase movement speed when speed boost is active
 }
 
-// Moving the player with arrow keys
-if (keyboard_check(vk_left)) {
-    x -= move_speed;
-    image_angle = 180; // Face left
-}
-
-if (keyboard_check(vk_right)) {
-    x += move_speed;
-    image_angle = 0; // Face right
-}
-
-if (keyboard_check(vk_up)) {
-    y -= move_speed;
-    image_angle = 270; // Face up
-}
-
-if (keyboard_check(vk_down)) {
-    y += move_speed;
-    image_angle = 90; // Face down
-}
 
 // Magnet logic (pull NPCs towards player)
 if (global.magnet_active) {
