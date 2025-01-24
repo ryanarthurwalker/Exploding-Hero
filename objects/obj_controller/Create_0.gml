@@ -11,6 +11,8 @@ global.speed_boost_active = false; // Speed boost effect is initially inactive
 global.speed_boost_duration = 0;   // Duration of the speed boost effect (in frames)
 level_complete = false;  // Initially, the level is not complete
 objective_complete = false;  // Initialize to false, meaning the objective is not yet complete
+global.bones = 0
+
 
 current_level = 1;  // Starting level
 enemies_to_kill = 10;  // Level 1 objective

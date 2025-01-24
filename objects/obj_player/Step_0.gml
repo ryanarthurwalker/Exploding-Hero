@@ -1,38 +1,61 @@
-// Horizontal movement
-if (keyboard_check(vk_right)) {
-    hspeed += acceleration; // Accelerate to the right
-} else if (keyboard_check(vk_left)) {
-    hspeed -= acceleration; // Accelerate to the left
-} else {
-    // Decelerate horizontally if no keys are pressed
-    if (abs(hspeed) > deceleration) {
-        hspeed -= sign(hspeed) * deceleration;
-    } else {
-        hspeed = 0; // Stop completely when very slow
-    }
+// Horizontal and vertical movement (D, A, W, S)
+var move_x = 0; // Initialize horizontal movement
+var move_y = 0; // Initialize vertical movement
+
+// Detect horizontal input
+if (keyboard_check(ord("D"))) {
+    move_x += 1; // Move right
+}
+if (keyboard_check(ord("A"))) {
+    move_x -= 1; // Move left
 }
 
-// Vertical movement
-if (keyboard_check(vk_up)) {
-    vspeed -= acceleration; // Accelerate upward
-} else if (keyboard_check(vk_down)) {
-    vspeed += acceleration; // Accelerate downward
-} else {
-    // Decelerate vertically if no keys are pressed
-    if (abs(vspeed) > deceleration) {
-        vspeed -= sign(vspeed) * deceleration;
-    } else {
-        vspeed = 0; // Stop completely when very slow
-    }
+// Detect vertical input
+if (keyboard_check(ord("W"))) {
+    move_y -= 1; // Move up
+}
+if (keyboard_check(ord("S"))) {
+    move_y += 1; // Move down
+}
+
+// Normalize movement to ensure consistent speed for diagonal movement
+if (move_x != 0 || move_y != 0) {
+    var movement_length = sqrt(move_x * move_x + move_y * move_y); // Calculate magnitude
+    move_x /= movement_length; // Normalize horizontal movement
+    move_y /= movement_length; // Normalize vertical movement
+}
+
+// Apply movement speed
+hspeed = move_x * max_speed;
+vspeed = move_y * max_speed;
+
+// Update position
+x += hspeed;
+y += vspeed;
+
+// Set `facing_direction` for all directions
+if (move_x > 0 && move_y < 0) {
+    facing_direction = 45;   // Diagonal Up-Right
+} else if (move_x < 0 && move_y < 0) {
+    facing_direction = 135;  // Diagonal Up-Left
+} else if (move_x < 0 && move_y > 0) {
+    facing_direction = 225;  // Diagonal Down-Left
+} else if (move_x > 0 && move_y > 0) {
+    facing_direction = 315;  // Diagonal Down-Right
+} else if (move_x > 0) {
+    facing_direction = 0;    // Right
+} else if (move_x < 0) {
+    facing_direction = 180;  // Left
+} else if (move_y < 0) {
+    facing_direction = 90;   // Up
+} else if (move_y > 0) {
+    facing_direction = 270;  // Down
 }
 
 // Clamp the speed to the maximum
 hspeed = clamp(hspeed, -max_speed, max_speed);
 vspeed = clamp(vspeed, -max_speed, max_speed);
 
-// Apply movement
-x += hspeed;
-y += vspeed;
 
 // Speed boost effect
 if (global.speed_boost_active) {
