@@ -33,6 +33,7 @@
     {"name":"obj_goblin_witch_menu","order":21,"path":"objects/obj_goblin_witch_menu/obj_goblin_witch_menu.yy",},
     {"name":"obj_magnet","order":7,"path":"objects/obj_magnet/obj_magnet.yy",},
     {"name":"obj_main_menu","order":9,"path":"objects/obj_main_menu/obj_main_menu.yy",},
+    {"name":"obj_npc_melee","order":25,"path":"objects/obj_npc_melee/obj_npc_melee.yy",},
     {"name":"obj_npc_ranged","order":24,"path":"objects/obj_npc_ranged/obj_npc_ranged.yy",},
     {"name":"obj_npc_shield","order":16,"path":"objects/obj_npc_shield/obj_npc_shield.yy",},
     {"name":"obj_npc","order":1,"path":"objects/obj_npc/obj_npc.yy",},

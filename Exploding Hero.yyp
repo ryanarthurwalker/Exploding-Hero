@@ -51,6 +51,7 @@
     {"id":{"name":"obj_goblin_witch_menu","path":"objects/obj_goblin_witch_menu/obj_goblin_witch_menu.yy",},},
     {"id":{"name":"obj_magnet","path":"objects/obj_magnet/obj_magnet.yy",},},
     {"id":{"name":"obj_main_menu","path":"objects/obj_main_menu/obj_main_menu.yy",},},
+    {"id":{"name":"obj_npc_melee","path":"objects/obj_npc_melee/obj_npc_melee.yy",},},
     {"id":{"name":"obj_npc_ranged","path":"objects/obj_npc_ranged/obj_npc_ranged.yy",},},
     {"id":{"name":"obj_npc_shield","path":"objects/obj_npc_shield/obj_npc_shield.yy",},},
     {"id":{"name":"obj_npc","path":"objects/obj_npc/obj_npc.yy",},},
