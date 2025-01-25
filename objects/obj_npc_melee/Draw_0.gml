@@ -1,7 +1,8 @@
-// Draw the NPC normally
+// Draw the NPC
 draw_self();
 
-// Indicate attacking state (e.g., draw a sword or glow effect)
+
+// Indicate when the NPC is attacking
 if (is_attacking) {
-    draw_circle_color(x + lengthdir_x(attack_range, image_angle), y + lengthdir_y(attack_range, image_angle), 10, c_red, c_red, false);
+    draw_text(x - 20, y - 40, "Attacking!");
 }

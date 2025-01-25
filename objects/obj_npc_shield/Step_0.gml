@@ -3,6 +3,35 @@ if (global.game_paused) {
     exit;
 }
 
+// Define the spawn area boundaries
+spawn_min_x = 128;  // Left boundary
+spawn_max_x = 1152; // Right boundary
+spawn_min_y = 128;  // Top boundary
+spawn_max_y = 711;  // Bottom boundary
+
+
+// Ensure the NPC stays within the defined boundaries
+if (x < spawn_min_x) {
+    x = spawn_min_x; // Clamp to left boundary
+} else if (x > spawn_max_x) {
+    x = spawn_max_x; // Clamp to right boundary
+}
+
+if (y < spawn_min_y) {
+    y = spawn_min_y; // Clamp to top boundary
+} else if (y > spawn_max_y) {
+    y = spawn_max_y; // Clamp to bottom boundary
+}
+
+// Reverse direction if hitting boundaries
+if (x <= spawn_min_x || x >= spawn_max_x) {
+    hspeed = -hspeed;
+}
+if (y <= spawn_min_y || y >= spawn_max_y) {
+    vspeed = -vspeed;
+}
+
+
 // Ensure the sprite remains upright (no rotation)
 image_angle = 0;
 
